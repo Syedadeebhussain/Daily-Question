@@ -1,12 +1,15 @@
-// Last updated: 31/7/2025, 10:04:46 pm
+// Last updated: 31/7/2025, 10:05:11 pm
 class Solution {
     public int commonFactors(int a, int b) {
-        int c=0;
-        for(int i=1;i<=Math.max(a,b);i++){
-            if(a%i==0 && b%i==0){
-                c++;
-            }
+        int count=1;
+        int minimum=a>b?b:a;
+        
+        for(int i=2;i<=minimum;i++)
+        {
+            if(a%i==0 && b%i ==0)
+                count+=1;
+
         }
-        return c;
+        return count;
     }
 }
