@@ -1,40 +1,29 @@
-// Last updated: 31/7/2025, 2:27:37 pm
-import java.util.*;
-
+// Last updated: 28/8/2025, 11:18:55 am
 class Solution {
-    public List<List<String>> groupAnagrams(String[] strs) {
-        List<List<String>> ll = new ArrayList<>();
-        int n = strs.length;
-        boolean[] visited = new boolean[n]; 
-
-        for (int i = 0; i < n; i++) {
-            if (visited[i]) continue; 
-
-            List<String> ll1 = new ArrayList<>();
-            ll1.add(strs[i]); 
-            visited[i] = true;
-
-            for (int j = i + 1; j < n; j++) {
-                if (!visited[j] && isAnagram(strs[i], strs[j])) {
-                    ll1.add(strs[j]);
-                    visited[j] = true; 
-                }
+    public List<List<String>> groupAnagrams(String[] arr) {
+        HashMap<String,List<String>> map=new HashMap<>();
+        for(int i=0;i<arr.length;i++){
+            String key=GetKey(arr[i]);
+            if(!map.containsKey(key)){
+                map.put(key,new ArrayList<>());
             }
-            ll.add(ll1);
+            map.get(key).add(arr[i]);
+        }
+        List<List<String>> ll=new ArrayList<>();
+        for(String key:map.keySet()){
+            ll.add(map.get(key));
         }
         return ll;
-    }  
-
-    public static boolean isAnagram(String str1, String str2) {
-        if (str1.length() != str2.length()) {
-            return false;
-        }
-
-        char[] charArray1 = str1.toCharArray();
-        char[] charArray2 = str2.toCharArray();
-        Arrays.sort(charArray1);
-        Arrays.sort(charArray2);
-
-        return Arrays.equals(charArray1, charArray2);
     }
+    public static String GetKey(String s){
+        int [] freq=new int [26];
+        for(int i=0;i<s.length();i++){
+            freq[s.charAt(i)-'a']++;
+        }
+        StringBuilder sb=new StringBuilder();
+        for(int i=0;i<freq.length;i++){
+            sb.append(freq[i]+" ");
+        }
+        return sb.toString();
+     }
 }
