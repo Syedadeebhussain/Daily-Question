@@ -1,4 +1,4 @@
-// Last updated: 2/9/2025, 11:24:09 pm
+// Last updated: 2/9/2025, 11:25:39 pm
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -27,9 +27,9 @@ class Solution {
             l2=l2.next;
             }
             carry=sum/10;
-            temp.next=new ListNode(sum%10);
-            temp=temp.next;
+            dummy.next=new ListNode(sum%10);
+            dummy=dummy.next;
         }
-        return dummy.next;
+        return temp.next;
     }
 }
