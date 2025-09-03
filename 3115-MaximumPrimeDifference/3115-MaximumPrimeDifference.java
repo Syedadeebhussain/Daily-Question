@@ -1,24 +1,36 @@
-// Last updated: 3/9/2025, 8:24:59 pm
+// Last updated: 3/9/2025, 8:30:05 pm
 class Solution {
     public int maximumPrimeDifference(int[] nums) {
-       int  min=Integer.MAX_VALUE;
-       int max=Integer.MIN_VALUE;
-        for(int i=0;i<nums.length;i++){
-            if(prime(nums[i]))
-            {
-               min=Math.min(i,min);
-               max=Math.max(i,max);
+        int start=0;
+        int end=nums.length-1;
+        while(start<end){
+            if(isPrime(nums[start])){
+                break;
             }
+            start++;
         }
-        return max-min;
+        while(end>=start){
+            if(isPrime(nums[end])){
+                break;
+            }
+            end--;
+        }
+        return end-start;
     }
-    public boolean prime(int n){
-        if(n==2 ){
+
+    public boolean isPrime(int n){
+        if(n<=1){
+            return false;
+        }
+        if(n==2 || n==3){
             return true;
         }
-        if(n==1) return false;
-        for(int i=2;i<n;i++){
-            if(n%i==0){
+        if(n%2==0 || n%3==0){
+            return false;
+        }
+        for(int i =5; i*i<=n;i=i+6){
+
+            if((n%i==0) ||(n%(i+2)==0) ){
                 return false;
             }
         }
