@@ -1,20 +1,20 @@
-// Last updated: 4/9/2025, 11:38:53 am
+// Last updated: 4/9/2025, 12:28:46 pm
 class Solution {
-    public int change(int amount, int[] coins) {
-        int[][] dp=new int[amount+1][coins.length];
-        for(int []a:dp){
-            Arrays.fill(a,-1);
-        }       
-        return Coin_Change(coins,amount,0,dp);
+    public int numDistinct(String s, String t) {
+        int[][] dp=new int[s.length()][t.length()];
+        for(int[] a:dp) Arrays.fill(a,-1);
+       return Num_Distinct(s,t,0,0,dp); 
     }
-    public static int Coin_Change(int[] coin,int amount,int i,int[][] dp)
+    public static int Num_Distinct(String s,String t,int i,int j,int[][] dp)
     {
-        if(amount==0) return 1;
-        if(i==coin.length) return 0;
-        if(dp[amount][i]!=-1) return dp[amount][i];
+        if(j==t.length()) return 1;
+        if(i==s.length()) return 0;
+        if(dp[i][j]!=-1) return dp[i][j];
         int inc=0,exc=0;
-        if(amount>=coin[i]) inc=Coin_Change(coin,amount-coin[i],i,dp);
-        exc=Coin_Change(coin,amount,i+1,dp);
-        return dp[amount][i]=inc+exc;
+        if(s.charAt(i)==t.charAt(j)){
+            inc=Num_Distinct(s,t,i+1,j+1,dp);
+        }
+        exc=Num_Distinct(s,t,i+1,j,dp);
+        return dp[i][j]=inc+exc;
     }
 }
