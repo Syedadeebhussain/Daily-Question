@@ -1,0 +1,17 @@
+class Solution {
+    public int minCostClimbingStairs(int[] cost) {
+        int [] dp=new int [cost.length];
+        Arrays.fill(dp,-1);
+        int one=findTD(cost,dp,0);
+        int two=findTD(cost,dp,1);
+        return Math.min(one,two);
+    }
+    public int findTD(int [] cost,int [] dp,int i){
+        if(i>=cost.length) return 0;
+        if(dp[i]!=-1) return dp[i];
+        int step_1=findTD(cost,dp, i+1);
+         int step_2=findTD(cost,dp, i+2);
+         return dp[i]=Math.min(step_1,step_2)+cost[i];
+    }
+
+}
