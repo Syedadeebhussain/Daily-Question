@@ -1,30 +1,20 @@
-// Last updated: 9/9/2025, 3:53:31 pm
+// Last updated: 9/9/2025, 3:54:50 pm
+import java.util.*;
+
 class Solution {
     public List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
-        List<List<Integer>> ans = new ArrayList<>();
-        
-        TreeSet<Integer> st = new TreeSet<>();
-        TreeSet<Integer> st1 = new TreeSet<>();
-        
-        for (int x : nums1) st.add(x);
-        for (int x : nums2) st1.add(x);
-
-        List<Integer> ll = new ArrayList<>();
-        List<Integer> ll1 = new ArrayList<>();
-
-        for (int val : st) {
-            if (!st1.contains(val)) {
-                ll.add(val);
-            }
+        Set<Integer> set1 = new HashSet<>();
+        Set<Integer> set2 = new HashSet<>();
+        for (int n : nums1) set1.add(n);
+        for (int n : nums2) set2.add(n);
+        List<Integer> diff1 = new ArrayList<>();
+        for (int n : set1) {
+            if (!set2.contains(n)) diff1.add(n);
         }
-        for (int val : st1) {
-            if (!st.contains(val)) {
-                ll1.add(val);
-            }
+        List<Integer> diff2 = new ArrayList<>();
+        for (int n : set2) {
+            if (!set1.contains(n)) diff2.add(n);
         }
-
-        ans.add(ll);
-        ans.add(ll1);
-        return ans;
+        return Arrays.asList(diff1, diff2);
     }
 }
