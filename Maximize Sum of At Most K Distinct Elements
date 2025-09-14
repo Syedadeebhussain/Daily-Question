@@ -1,0 +1,21 @@
+class Solution {
+    public int[] maxKDistinct(int[] nums, int k) {
+        TreeSet<Integer> st=new TreeSet<>();
+        for(int i=0;i<nums.length;i++){
+            st.add(nums[i]);
+        }
+        int [] arr=new int [st.size()];
+        int i1=0;
+        for(int val:st){
+            arr[i1]=val;
+            i1++;
+        }
+        Arrays.sort(arr);
+        k=Math.min(k,arr.length);
+        int [] ans=new int [k];
+        for(int i=0, j=arr.length-1;i<k;i++,j--){
+            ans[i]=arr[j];
+        }
+        return ans;
+    }
+}
