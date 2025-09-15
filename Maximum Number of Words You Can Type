@@ -1,0 +1,19 @@
+class Solution {
+    public int canBeTypedWords(String text, String brokenLetters) {
+    String [] s=text.split(" ");
+    int c=0;
+    for(String st:s){
+        boolean find=true;
+        for(char ch : brokenLetters.toCharArray()){
+            if(st.indexOf(ch)!=-1){
+               find=false;
+               break;
+            }
+        }
+        if(find){
+            c++;
+        }
+    }
+    return c;
+    }
+}
