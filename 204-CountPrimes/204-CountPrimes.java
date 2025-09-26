@@ -1,4 +1,4 @@
-// Last updated: 31/7/2025, 2:26:27 pm
+// Last updated: 26/9/2025, 3:32:53 pm
 class Solution {
     public int countPrimes(int n) {
     if(n<=2)
@@ -13,7 +13,6 @@ class Solution {
 	for(int i=2;i*i<=ans.length;i++) {
 		if(ans[i]==0) // i prime hai
 		{
-			
 			for(int j=2;i*j <ans.length;j++)
 				//2*2
 			{
