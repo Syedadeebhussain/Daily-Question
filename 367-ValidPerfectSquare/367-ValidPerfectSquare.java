@@ -1,4 +1,4 @@
-// Last updated: 31/7/2025, 2:25:55 pm
+// Last updated: 27/9/2025, 10:10:04 pm
 class Solution {
     public boolean isPerfectSquare(int num) {
     int lo=0;
