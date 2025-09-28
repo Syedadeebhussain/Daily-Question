@@ -1,4 +1,4 @@
-// Last updated: 28/9/2025, 7:12:02 pm
+// Last updated: 28/9/2025, 7:12:33 pm
 class Solution {
     public long minimumTime(int[] time, int totalTrips) {
       long lo=1;
@@ -22,6 +22,7 @@ class Solution {
     }
     public boolean ispossible(long mid,int [] time,int k){
         long trip=0;
+        // how many trip one bus can complete in mid time
         for(int i=0;i<time.length;i++){
             trip+=mid/time[i];
         }
