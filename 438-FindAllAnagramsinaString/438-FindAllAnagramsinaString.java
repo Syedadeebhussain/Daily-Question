@@ -1,4 +1,4 @@
-// Last updated: 30/9/2025, 9:50:23 pm
+// Last updated: 30/9/2025, 9:52:11 pm
 class Solution {
     public List<Integer> findAnagrams(String s2, String s1) {
      List<Integer> ll=new ArrayList<>();
@@ -16,7 +16,7 @@ class Solution {
     for(int i=k;i<s2.length();i++){
         freq2[s2.charAt(i-k)-'a']--;
         freq2[s2.charAt(i)-'a']++;
-        if(isEqual(freq1,freq2)) ll.add(i - k + 1);
+        if(isEqual(freq1,freq2)) ll.add(i - k + 1); // we have to add 1+index (index that is removed +1 )
     }
     return ll;
     }
