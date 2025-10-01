@@ -1,10 +1,23 @@
-// Last updated: 1/10/2025, 3:03:53 pm
+// Last updated: 1/10/2025, 3:19:32 pm
 class Solution {
-    public String getEncryptedString(String s, int k) {
-        StringBuilder st=new StringBuilder();
-     for(int i=0;i<s.length();i++){
-         st.append(s.charAt((i+k)%s.length()));
-     }   
-     return st.toString();
+    public int numRescueBoats(int[] people, int limit) {
+      Arrays.sort(people);
+      int i=0;
+      int c=0;
+      int j=people.length-1;
+      while(i<=j){
+        if(people[i]+people[j]<=limit){
+            c++;
+            i++;
+            j--;
+        }
+        else
+        {
+            c++;
+            j--;
+        }
+      
+      }
+      return c;  
     }
 }
