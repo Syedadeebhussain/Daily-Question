@@ -1,28 +1,26 @@
-// Last updated: 4/10/2025, 10:20:23 pm
+// Last updated: 4/10/2025, 10:24:09 pm
 class Solution {
     public int totalNQueens(int n) {
-    List<List<String>> ans=new ArrayList<>();
-      List<String> ll=new ArrayList<>();
      boolean [][] chess=new boolean[n][n];
-     print(chess,0,0,n,ans,ll);
-     return ans.size();
+    return solve(chess,0,n);
+    
     }
-    public static void print(boolean [][] chess,int row,int col,int tq,List<List<String>> ans, List<String> ll)
-    {
-       if(tq==0){
-        ans.add(new ArrayList<>(ll));
-        return ;
-       }
-        for(int i=0;i<chess[0].length;i++){
-            if(isvalid(chess,row,i))
-            {
-            chess[row][i]=true;
-           ll.add(addkaro(i, chess.length));
-            print(chess,row+1,col,tq-1,ans,ll);
-            ll.remove(ll.size()-1);
-            chess[row][i]=false;
+       public static int solve(boolean[][] chess, int row, int tq) {
+        if (tq == 0) {
+            return 1;
+        }
+        if (row >= chess.length) {
+            return 0;
+        }
+        int count = 0;
+        for (int i = 0; i < chess[0].length; i++) {
+            if (isvalid(chess, row, i)) {
+                chess[row][i] = true;
+                count += solve(chess, row + 1, tq - 1);
+                chess[row][i] = false;
             }
         }
+        return count;
     }
     public static boolean isvalid(boolean [][] chess,int row,int col)
     {
