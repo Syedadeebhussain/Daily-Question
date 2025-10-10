@@ -1,4 +1,4 @@
-// Last updated: 10/10/2025, 9:28:16 am
+// Last updated: 10/10/2025, 9:28:27 am
 class Solution {
     public List<Integer> intersection(int[][] nums) {
      int [] freq=new int [1001];
@@ -13,7 +13,7 @@ class Solution {
             ll.add(i);
         }
      }
-     Collections.sort(ll);
+    //  Collections.sort(ll);
      return ll;
     }
 }
