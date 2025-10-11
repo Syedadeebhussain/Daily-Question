@@ -1,4 +1,4 @@
-// Last updated: 10/10/2025, 9:56:54 am
+// Last updated: 11/10/2025, 11:21:03 pm
 class Solution {
     public int minOperations(int[] nums) {
     HashMap<Integer,Integer> mp=new HashMap<>();
