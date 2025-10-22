@@ -1,0 +1,35 @@
+// Last updated: 22/10/2025, 7:14:33 pm
+class Solution {
+    public String removeDuplicates(String s, int k) {
+      Stack<Pair> st=new Stack<>();
+      st.push(new Pair(s.charAt(0),1));
+      for(int i=1;i<s.length();i++){
+        if(!st.isEmpty() && s.charAt(i)==st.peek().ch){
+            st.peek().c++;
+            if(st.peek().c==k){
+              st.pop();
+            }
+        }
+        else
+        {
+        st.push(new Pair(s.charAt(i),1));
+        }
+      } 
+      StringBuilder ans=new StringBuilder();
+      while(!st.isEmpty()){
+        Pair p = st.pop();
+            for(int i = 0; i < p.c; i++) {
+                ans.append(p.ch);
+          }
+      }
+      return ans.reverse().toString();
+    }
+}
+class Pair {
+    char ch;
+    int c;
+    public Pair(char ch, int c) {
+        this.ch = ch;
+        this.c = c;
+    }
+}
