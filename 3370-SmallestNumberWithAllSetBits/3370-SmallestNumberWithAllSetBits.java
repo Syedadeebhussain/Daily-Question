@@ -1,4 +1,4 @@
-// Last updated: 2/8/2025, 12:16:06 pm
+// Last updated: 29/10/2025, 8:59:30 pm
 class Solution {
     public int smallestNumber(int n) {
         int i=1;
