@@ -1,20 +1,25 @@
-// Last updated: 4/9/2025, 12:28:46 pm
+// Last updated: 30/10/2025, 10:08:49 pm
+import java.util.Arrays;
+
 class Solution {
-    public int numDistinct(String s, String t) {
-        int[][] dp=new int[s.length()][t.length()];
-        for(int[] a:dp) Arrays.fill(a,-1);
-       return Num_Distinct(s,t,0,0,dp); 
+    public int change(int amount, int[] coins) {
+        int[][] dp = new int[coins.length + 1][amount + 1];
+        for (int[] row : dp) Arrays.fill(row, -1);
+        return Combination(coins, amount, 0, dp);
     }
-    public static int Num_Distinct(String s,String t,int i,int j,int[][] dp)
-    {
-        if(j==t.length()) return 1;
-        if(i==s.length()) return 0;
-        if(dp[i][j]!=-1) return dp[i][j];
-        int inc=0,exc=0;
-        if(s.charAt(i)==t.charAt(j)){
-            inc=Num_Distinct(s,t,i+1,j+1,dp);
+
+    public static int Combination(int[] coin, int amount, int idx, int[][] dp) {
+        if (amount == 0) return 1;  
+        if (idx == coin.length) return 0; 
+
+        if (dp[idx][amount] != -1) return dp[idx][amount]; 
+
+        int ways = 0;
+        for (int i = idx; i < coin.length; i++) {
+            if (amount >= coin[i]) {
+                ways += Combination(coin, amount - coin[i], i, dp); 
+            }
         }
-        exc=Num_Distinct(s,t,i+1,j,dp);
-        return dp[i][j]=inc+exc;
+        return dp[idx][amount] = ways; 
     }
 }
