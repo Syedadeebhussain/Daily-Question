@@ -1,4 +1,4 @@
-// Last updated: 31/10/2025, 3:10:16 pm
+// Last updated: 1/11/2025, 9:28:04 pm
 class Solution {
     public int rob(int[] arr) {
       int n=arr.length;
