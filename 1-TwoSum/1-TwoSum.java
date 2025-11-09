@@ -1,22 +1,19 @@
-// Last updated: 31/7/2025, 2:28:07 pm
+// Last updated: 9/11/2025, 10:08:06 pm
+import java.util.*;
+
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        return calc(nums,target);
+        HashMap<Integer, Integer> map = new HashMap<>(); 
+        for (int i = 0; i < nums.length; i++) {
+            int complement = target - nums[i];
+
+            if (map.containsKey(complement)) {
+                return new int[] { map.get(complement), i };
+            }
+
+            map.put(nums[i], i); 
+        }
+
+        return new int[] {}; 
     }
-    public static int[] calc(int [] arr,int target)
-{
-	int n=arr.length;
-	int[] result=new int[2];
-	for(int i=0;i<n;i++)
-	{
-		for(int j=i+1;j<n;j++)
-		{
-			if(arr[i]+arr[j]==target)
-			{
-				return new int[] {i,j};
-			}
-		}
-	}
-return new int[] {};
-}
 }
