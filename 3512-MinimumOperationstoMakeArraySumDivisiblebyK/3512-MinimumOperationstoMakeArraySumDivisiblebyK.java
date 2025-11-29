@@ -1,14 +1,14 @@
-// Last updated: 6/9/2025, 10:30:22 pm
-class Solution {
-    public int minOperations(int[] nums, int k) {
-      int s = 0;
-        for(int i=0; i<nums.length; i++){
-            s += nums[i];
-        }
-        if(s%k == 0){
-            return 0;
-        }else{
-            return s%k;
-        }
-    }
-}
+// Last updated: 29/11/2025, 8:08:36 am
+1class Solution {
+2    public int minOperations(int[] nums, int k) {
+3      int s = 0;
+4        for(int i=0; i<nums.length; i++){
+5            s += nums[i];
+6        }
+7        if(s%k == 0){
+8            return 0;
+9        }else{
+10            return s%k;
+11        }
+12    }
+13}
