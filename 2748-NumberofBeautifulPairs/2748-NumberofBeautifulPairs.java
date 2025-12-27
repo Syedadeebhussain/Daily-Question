@@ -1,4 +1,4 @@
-// Last updated: 27/12/2025, 6:25:42 pm
+// Last updated: 27/12/2025, 6:25:47 pm
 1class Solution {
 2    public int countBeautifulPairs(int[] nums) {
 3        int count = 0;
