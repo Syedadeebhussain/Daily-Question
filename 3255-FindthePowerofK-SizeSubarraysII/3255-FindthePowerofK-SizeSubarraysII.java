@@ -1,4 +1,4 @@
-// Last updated: 28/12/2025, 9:37:42 pm
+// Last updated: 28/12/2025, 9:37:51 pm
 1class Solution {
 2    public int[] resultsArray(int[] nums, int k) {
 3          if (k == 1) return nums;
