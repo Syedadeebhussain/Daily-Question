@@ -1,30 +1,21 @@
-// Last updated: 31/7/2025, 2:26:50 pm
-class Solution {
-    public int canCompleteCircuit(int[] gas, int[] cost) {
-    return Complete(gas,cost);
-    }
-     public static int Complete(int [] gas,int[] cost)
-{
-	int total=0;
-	for(int i=0;i<cost.length;i++)
-	{
-		total+=gas[i]-cost[i];
-	}
-	if(total<0)
-	{
-		return -1;
-	}
-	int idx=0;
-	int curr=0;
-	for(int i=0;i<cost.length;i++)
-	{
-		curr+=gas[i]-cost[i];
-		if(curr<0)
-		{
-			curr=0;
-			idx=i+1;
-		}
-	}
-	return idx;
-}
-}
+// Last updated: 1/1/2026, 12:03:12 pm
+1class Solution {
+2    public int canCompleteCircuit(int[] gas, int[] cost) {
+3      int totalcost=0;
+4      for(int i=0;i<gas.length;i++){
+5        totalcost+=gas[i]-cost[i];
+6      }  
+7      if(totalcost<0) return -1;
+8      int total=0;
+9      int curr=0;
+10      for(int i=0;i<gas.length;i++){
+11        total+=gas[i]-cost[i];
+12        if(total<0){
+13            curr=i+1;
+14            total=0;
+15        }
+16      }  
+17      return curr;
+18      
+19     }
+20}
