@@ -1,43 +1,70 @@
-// Last updated: 4/1/2026, 11:59:34 am
-1class Solution {
-2    public int countPaths(int n, int[][] roads) {
-3        HashMap<Integer, HashMap<Integer, Integer>> mp = new HashMap<>();
-4        for (int i = 0; i < n; i++) {
-5            mp.put(i, new HashMap<>());
-6        }
-7        int mod = 1_000_000_007;
-8        for (int[] r : roads) {
-9            int u = r[0];
-10            int v = r[1];
-11            int c = r[2];
-12            mp.get(u).put(v, c);
-13            mp.get(v).put(u, c);
-14        }
-15        long[] dist = new long[n];
-16        Arrays.fill(dist, Long.MAX_VALUE);
-17        int[] ct = new int[n];
-18        dist[0] = 0;
-19        ct[0] = 1;
-20        PriorityQueue<long[]> pq =
-21            new PriorityQueue<>((a, b) -> Long.compare(a[1], b[1]));
-22        pq.add(new long[]{0, 0});
-23        while (!pq.isEmpty()) {
-24            long[] rm = pq.poll();
-25            int node = (int) rm[0];
-26            long cost = rm[1];
-27            if (cost > dist[node]) continue;
-28            for (int nbr : mp.get(node).keySet()) {
-29                long newcost = cost + mp.get(node).get(nbr);
-30                if (newcost < dist[nbr]) {
-31                    dist[nbr] = newcost;
-32                    ct[nbr] = ct[node];
-33                    pq.add(new long[]{nbr, newcost});
-34                } else if (newcost == dist[nbr]) {
-35                    ct[nbr] = (ct[nbr] + ct[node]) % mod;
-36                }
-37            }
-38        }
-39        return ct[n - 1];
-40    }
-41}
-42
+// Last updated: 4/1/2026, 12:03:29 pm
+class Solution {
+    class Pair{
+        long distance;
+        int node;
+        
+        public Pair(long distance, int node){
+            this.distance= distance;
+            this.node= node;
+           
+        }
+    }
+    class Graph{
+        int v ;
+        int wt;
+        public Graph(int v, int wt){
+            this.v=v;
+            this.wt = wt;
+        }
+    }
+    public int countPaths(int n, int[][] roads) {
+    
+    
+     int MOD = 1000000007;
+     List<List<Graph>> graph = new ArrayList<>();
+     for(int i=0;i<n;i++){
+        graph.add(new ArrayList<>());
+     }
+     for(int i=0;i<roads.length;i++){
+        int u= roads[i][0];
+        int v = roads[i][1];
+        int wt = roads[i][2];
+        graph.get(u).add(new Graph(v,wt));
+        graph.get(v).add(new Graph(u,wt));
+
+     }
+     PriorityQueue<Pair> pq = new PriorityQueue<>((x,y)-> Long.compare(x.distance , y.distance));
+    pq.add(new Pair(0,0));
+    long dist[]= new long[n];
+    long ways[]= new long[n];
+    ways[0]=1;
+    for(int i=0;i<n;i++){
+        dist[i]=(long)(1e18); //1e18 since long max
+    }
+    dist[0]=0;
+    // int ways =0;
+     while(!pq.isEmpty()){
+        Pair p = pq.poll();
+        long distance= p.distance;
+        int node =p.node;
+        if(distance>dist[node]) continue; ///imp line
+        
+        for(Graph g :graph.get(node)){
+            int v = g.v;
+            long edgewt = g.wt;
+            long newWt = distance + edgewt;
+            if(newWt <dist[v]) {
+                dist[v]= newWt;
+                ways[v]=ways[node];
+                pq.add(new Pair(newWt, v));
+                // ans=ways;
+            }
+            else if(newWt ==dist[v]){
+                ways[v]=(ways[node]+ways[v])%MOD;
+            }
+        }
+     }
+     return (int)(ways[n - 1] % MOD);
+    }
+}
