@@ -1,21 +1,25 @@
-// Last updated: 15/1/2026, 12:31:01 am
+// Last updated: 15/1/2026, 12:45:59 am
 1class Solution {
-2    int [] dp;
-3    public int jump(int[] nums) {
-4      dp=new int[nums.length];
-5      Arrays.fill(dp,-1);
-6        return Solve(nums,0);
-7    }
-8    public int Solve(int [] nums,int i){
-9        if(i>=nums.length) return Integer.MAX_VALUE-1;
-10        if(i==nums.length-1) return 0;
-11        if(dp[i]!=-1){
-12            return dp[i];
-13        }
-14        int min=Integer.MAX_VALUE-1;
-15        for(int x=1;x<=nums[i];x++){
-16         min=Math.min(min,1+Solve(nums,i+x));
-17        }
-18        return dp[i]=min;
-19    }
-20}
+2    public boolean canReach(int[] arr, int start) {
+3    Queue<Integer>q=new LinkedList<>();
+4    q.add(start);
+5   boolean visited[]=new boolean[arr.length];
+6    visited[start]=true;
+7    while(!q.isEmpty()){
+8        int idx=q.poll();
+9        if(arr[idx]==0) return true;
+10        int forward=idx+arr[idx];
+11        if(forward<arr.length && !visited[forward]){
+12              visited[forward]=true;
+13              q.add(forward);  
+14        }
+15        int backward=idx-arr[idx];
+16        if(backward>=0 && !visited[backward]){
+17              visited[backward]=true;
+18              q.add(backward) ; 
+19        }
+20    }
+21    return false;
+22    }
+23
+24}
