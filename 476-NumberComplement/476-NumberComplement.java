@@ -1,14 +1,12 @@
-// Last updated: 19/1/2026, 1:18:10 pm
+// Last updated: 19/1/2026, 1:31:46 pm
 1class Solution {
-2    public int findComplement(int num) {
-3        int bits = 0;
-4        int n = num;
-5        while (n > 0) {
-6            n >>= 1;
-7            bits++;
-8        }
-9        int mask = (1 << bits) - 1;
-10        return num ^ mask;
-11    }
-12}
-13
+2    public int hammingDistance(int x, int y) {
+3    int z=x^y;
+4    int bit=0;
+5    while(z>0){
+6        if((z&1)!=0) bit++;
+7        z>>=1;
+8    }
+9    return bit;
+10    }
+11}
