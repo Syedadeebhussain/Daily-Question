@@ -1,12 +1,10 @@
-// Last updated: 9/10/2025, 10:07:46 am
-class Solution {
-    public int singleNumber(int[] nums) {
-    Map<Integer,Integer> mp=new HashMap<>();
-    for(int i=0;i<nums.length;i++){
-        mp.put(nums[i],mp.getOrDefault(nums[i],0)+1);
-    }
-PriorityQueue<Integer> pq=new PriorityQueue<>((a,b)->mp.get(a)-mp.get(b));
-    pq.addAll(mp.keySet());
-    return pq.poll();
-    }
-}
+// Last updated: 20/1/2026, 7:34:13 pm
+1class Solution {
+2    public int singleNumber(int[] nums) {
+3    int xor=0;
+4    for(int i=0;i<nums.length;i++){
+5        xor^=nums[i];
+6    } 
+7    return xor;
+8    }
+9}
