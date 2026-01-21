@@ -1,0 +1,23 @@
+// Last updated: 21/1/2026, 9:42:06 pm
+1class Solution {
+2    public String addStrings(String a, String b) {
+3      int carry=0;
+4      StringBuilder st=new StringBuilder();
+5      int i=a.length()-1;
+6      int j=b.length()-1;
+7      while(i>=0 || j>=0 || carry!=0){
+8        int sum=carry;
+9        if(i>=0){
+10            sum+=a.charAt(i)-'0';
+11            i--;
+12        }
+13         if(j>=0){
+14            sum+=b.charAt(j)-'0';
+15            j--;
+16        }
+17        carry=sum/10;
+18        st.append(sum%10);
+19      }
+20      return st.reverse().toString();  
+21    }
+22}
