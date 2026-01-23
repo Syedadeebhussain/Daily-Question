@@ -1,4 +1,4 @@
-// Last updated: 18/1/2026, 10:12:18 pm
+// Last updated: 23/1/2026, 9:48:44 pm
 1class Solution {
 2    public long maxTotal(int[] value, int[] limit) {
 3        Map<Integer, List<Integer>> buckets = new HashMap<>();
