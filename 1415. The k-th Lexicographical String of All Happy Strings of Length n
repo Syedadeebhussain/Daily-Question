@@ -1,0 +1,47 @@
+// class Solution {
+//     List<String> ll=new ArrayList<>();
+//     String str;
+//     public String getHappyString(int n, int k) {
+//        str="abc"; 
+//        Solve(n,"");
+//        Collections.sort(ll);
+//        System.out.println(ll);
+//        return k<=ll.size()?ll.get(k-1):"";
+//     }
+//     public void Solve(int n,String ans){
+//     if(ans.length()==n){
+//         ll.add(ans);
+//         return;
+//     }
+//     for(int i=0;i<3;i++){
+//         if(ans.length()==0 || ans.charAt(ans.length()-1)!=str.charAt(i))
+//         {
+//         Solve(n,ans+""+str.charAt(i));
+//         }
+//     }
+//     }
+// }
+class Solution {
+    String str = "abc";
+    int count = 0;
+    String result = "";
+    public String getHappyString(int n, int k) {
+        Solve(n, k, "");
+        return result;
+    }
+    public void Solve(int n, int k, String ans) {
+        if (!result.isEmpty()) return;
+        if (ans.length() == n) {
+            count++;
+            if (count == k) {
+                result = ans;
+            }
+            return;
+        }
+        for (int i = 0; i < 3; i++) {
+            if (ans.length() == 0 || ans.charAt(ans.length() - 1) != str.charAt(i)) {
+                Solve(n, k, ans + str.charAt(i));
+            }
+        }
+    }
+}
