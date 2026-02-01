@@ -1,4 +1,4 @@
-// Last updated: 1/2/2026, 9:52:54 pm
+// Last updated: 1/2/2026, 9:57:05 pm
 1class Solution {
 2    public String shiftingLetters(String s, int[] shifts) {
 3       long sum=0;
@@ -12,10 +12,6 @@
 11        arr[i]=new_ch;
 12        sum-=shifts[i];
 13       }
-14       StringBuilder sb=new StringBuilder();
-15       for(char i:arr){
-16        sb.append(i);
-17       }
-18       return sb.toString();
-19    }
-20}
+14      return new String(arr);
+15    }
+16}
