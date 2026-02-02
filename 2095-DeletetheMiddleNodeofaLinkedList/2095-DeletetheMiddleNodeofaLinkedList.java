@@ -1,32 +1,33 @@
-// Last updated: 27/8/2025, 11:46:33 pm
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
-class Solution {
-    public ListNode deleteMiddle(ListNode head) {
-         if (head == null || head.next == null) {
-            return null;
-        }
-        ListNode middle=MiddleNode(head);
-    return head;
-    }
-    public ListNode MiddleNode(ListNode head) {
-    ListNode slow=head;
-        ListNode fast=head;
-        ListNode prev=null;
-        while(fast!=null && fast.next!=null){
-            prev=slow;
-            slow=slow.next;
-            fast=fast.next.next;
-        }
-     prev.next=slow.next;
-     return head;
-}
-}
+// Last updated: 2/2/2026, 10:47:42 am
+1/**
+2 * Definition for singly-linked list.
+3 * public class ListNode {
+4 *     int val;
+5 *     ListNode next;
+6 *     ListNode() {}
+7 *     ListNode(int val) { this.val = val; }
+8 *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+9 * }
+10 */
+11class Solution {
+12    public ListNode deleteMiddle(ListNode head) {
+13         if (head == null || head.next == null) {
+14            return null;
+15        }
+16        ListNode middle=MiddleNode(head);
+17    return head;
+18    }
+19    public ListNode MiddleNode(ListNode head) {
+20    ListNode slow=head;
+21        ListNode fast=head;
+22        ListNode prev=null;
+23        while(fast!=null && fast.next!=null){
+24            prev=slow;
+25            slow=slow.next;
+26            fast=fast.next.next;
+27        }
+28     prev.next=slow.next;
+29     slow.next=null;
+30     return head;
+31}
+32}
