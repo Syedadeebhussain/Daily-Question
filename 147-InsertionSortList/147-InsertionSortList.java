@@ -1,7 +1,7 @@
-// Last updated: 3/2/2026, 10:06:53 am
+// Last updated: 3/2/2026, 10:09:42 am
 1class Solution {
 2    public ListNode insertionSortList(ListNode head) {
-3        if (head == null || head.next == null) {
+3        if (head.next == null) {
 4            return head;
 5        }
 6        ListNode midPrev = middle(head);// because of infinite recursion we are taking mid-1
