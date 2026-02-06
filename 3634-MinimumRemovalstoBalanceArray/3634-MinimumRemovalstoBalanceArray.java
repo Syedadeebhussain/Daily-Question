@@ -1,4 +1,4 @@
-// Last updated: 20/1/2026, 11:29:18 pm
+// Last updated: 6/2/2026, 11:30:26 pm
 1class Solution {
 2    public int minRemoval(int[] nums, int k) {
 3     Arrays.sort(nums);
