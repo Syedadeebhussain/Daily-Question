@@ -1,4 +1,4 @@
-// Last updated: 30/12/2025, 11:14:17 am
+// Last updated: 28/2/2026, 11:49:11 am
 1class Solution {
 2    public int findCircleNum(int[][] isConnected) {
 3    List<List<Integer>> ll=new ArrayList<>();
@@ -24,7 +24,7 @@
 23            if(visited.contains(r)) continue;
 24            visited.add(r);
 25            for(int nbrs:ll.get(r)){
-26                if(nbrs!=r && !visited.contains(nbrs)){
+26                if(nbrs!=r && !visited.contains(nbrs)){ //we dont have to consider self neighbour
 27                    q.add(nbrs);
 28                }
 29            }
