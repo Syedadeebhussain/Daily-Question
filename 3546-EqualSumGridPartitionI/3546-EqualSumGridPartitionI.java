@@ -1,4 +1,4 @@
-// Last updated: 25/3/2026, 8:09:04 pm
+// Last updated: 25/3/2026, 8:09:27 pm
 1class Solution {
 2    public boolean canPartitionGrid(int[][] grid) {
 3        long[] horizontal = new long[grid.length + 1];
