@@ -1,4 +1,4 @@
-// Last updated: 10/4/2026, 10:15:41 pm
+// Last updated: 11/4/2026, 11:30:18 pm
 1class Solution {
 2    public int minimumDistance(int[] nums) {
 3        Map<Integer,List<Integer>> mp=new HashMap<>();
