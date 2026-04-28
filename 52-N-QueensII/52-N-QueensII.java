@@ -1,4 +1,4 @@
-// Last updated: 18/4/2026, 12:11:13 am
+// Last updated: 28/4/2026, 10:41:07 pm
 1class Solution {
 2    public int totalNQueens(int n) {
 3     boolean [][] chess=new boolean[n][n];
