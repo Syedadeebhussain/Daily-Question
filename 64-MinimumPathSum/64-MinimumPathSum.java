@@ -1,33 +1,26 @@
-// Last updated: 10/9/2025, 12:33:19 pm
-class Solution {
-    public int minFallingPathSum(int[][] grid) {
-		int ans = Integer.MAX_VALUE;
-		int[][] dp = new int[grid.length][grid[0].length];
-		for (int[] a : dp) {
-			Arrays.fill(a, -100000);
-		}
-		for (int i = 0; i < grid[0].length; i++) {
-			ans = Math.min(ans, Falling_Path_Sum(grid, 0, i, dp));
-		}
-		return ans;
-	}
-
-	public static int Falling_Path_Sum(int[][] grid, int cr, int cc, int[][] dp) {
-		if (cr == grid.length - 1) {
-			return grid[cr][cc];
-
-		}
-		if (dp[cr][cc] != -100000) {
-			return dp[cr][cc];
-
-		}
-		int ans = Integer.MAX_VALUE;
-		for (int col = 0; col < grid[0].length; col++) {
-			if (col == cc) {
-				continue;
-			}
-			ans = Math.min(ans, Falling_Path_Sum(grid, cr + 1, col, dp));
-		}
-		return dp[cr][cc] = ans += grid[cr][cc];
-	}
-}
+// Last updated: 6/5/2026, 12:50:20 am
+1class Solution {
+2    int [][] dp;
+3    public int minPathSum(int[][] grid) {
+4        int n=grid.length;
+5        int m=grid[0].length;
+6        dp=new int[n][m];
+7        for(int [] dp1:dp){
+8        Arrays.fill(dp1,-1);
+9        }
+10        return Solve(grid,0,0);
+11    }
+12    public int Solve(int[][] grid,int r,int c){
+13        if(r==grid.length-1 && c==grid[0].length-1){
+14            return grid[r][c];
+15        }
+16        if(r>=grid.length || c>=grid[0].length){
+17            return Integer.MAX_VALUE;
+18        }
+19        if(dp[r][c]!=-1) return dp[r][c];
+20        int a=Solve(grid,r,c+1);
+21        int b=Solve(grid,r+1,c);
+22        dp[r][c]=Math.min(a,b)+grid[r][c];
+23         return dp[r][c];
+24    }
+25}
