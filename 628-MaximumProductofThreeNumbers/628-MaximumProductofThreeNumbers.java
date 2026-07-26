@@ -1,4 +1,4 @@
-// Last updated: 27/7/2026, 12:27:31 am
+// Last updated: 27/7/2026, 12:27:40 am
 1class Solution {
 2    public int maximumProduct(int[] nums) {
 3      Arrays.sort(nums);
