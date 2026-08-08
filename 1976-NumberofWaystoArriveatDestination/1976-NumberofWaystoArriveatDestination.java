@@ -1,48 +1,45 @@
-// Last updated: 28/2/2026, 12:14:41 pm
-1import java.util.*;
-2
-3class Solution {
-4    public int countPaths(int n, int[][] roads) {
-5        int mod = 1_000_000_007;
-6        Map<Integer, HashMap<Integer, Integer>> graph = new HashMap<>();
-7        for (int i = 0; i < n; i++) {
-8            graph.put(i, new HashMap<>());
-9        }
-10        for (int[] r : roads) {
-11            int u = r[0];
-12            int v = r[1];
-13            int wt = r[2];
-14            graph.get(u).put(v, wt);
-15            graph.get(v).put(u, wt);
-16        }
-17        long[] dist = new long[n];
-18        Arrays.fill(dist, Long.MAX_VALUE);
-19        int[] ways = new int[n];
-20        dist[0] = 0;
-21        ways[0] = 1;
-22        PriorityQueue<long[]> pq =
-23                new PriorityQueue<>((a, b) -> Long.compare(a[1], b[1]));
-24        pq.add(new long[]{0, 0});
-25        while (!pq.isEmpty()) {
-26            long[] cur = pq.poll();
-27            int node = (int) cur[0];
-28            long cost = cur[1];
-29            if(node==n-1) return ways[n-1];
-30            if (cost > dist[node]) continue;
-31            for (int nbr:graph.get(node).keySet()) {
-32                int wt = graph.get(node).get(nbr);
-33                long newCost = cost + wt;
-34                if (newCost < dist[nbr]) {
-35                    dist[nbr] = newCost;
-36                    ways[nbr] = ways[node];
-37                    pq.add(new long[]{nbr, newCost});
-38                } 
-39                else if (newCost == dist[nbr]) {
-40                    ways[nbr] = (ways[nbr] + ways[node]) % mod;
-41                }
-42            }
-43        }
-44
-45        return 0;
-46    }
-47}
+// Last updated: 9/8/2026, 12:04:51 am
+1class Solution {
+2    int MOD = 1000000007;
+3    public int countPaths(int n, int[][] roads) {
+4        List<List<long[]>> graph = new ArrayList<>();
+5        for (int i = 0; i < n; i++) {
+6            graph.add(new ArrayList<>());
+7        }
+8        for (int[] road : roads) {
+9            int u = road[0];
+10            int v = road[1];
+11            int time = road[2];
+12            graph.get(u).add(new long[]{v, time});
+13            graph.get(v).add(new long[]{u, time});
+14        }
+15        long[] dist = new long[n];
+16        Arrays.fill(dist, Long.MAX_VALUE);
+17        dist[0] = 0;
+18        int[] count = new int[n];
+19        count[0] = 1;
+20        PriorityQueue<long[]> pq =new PriorityQueue<>((a, b) -> Long.compare(a[1], b[1]));
+21        pq.add(new long[]{0, 0});
+22        while (!pq.isEmpty()) {
+23            long[] curr = pq.poll();
+24            int node = (int) curr[0];
+25            long time = curr[1];
+26            if (time > dist[node])
+27                continue;
+28            for (long[] edge : graph.get(node)) {
+29                int next = (int) edge[0];
+30                long weight = edge[1];
+31                long newTime = time + weight;
+32                if (newTime < dist[next]) {
+33                    dist[next] = newTime;
+34                    count[next] = count[node];
+35                    pq.add(new long[]{next,newTime});
+36                }
+37                else if (newTime == dist[next]){
+38                    count[next]=(count[next] + count[node]) % MOD;
+39                }
+40            }
+41        }
+42        return count[n-1];
+43    }
+44}
