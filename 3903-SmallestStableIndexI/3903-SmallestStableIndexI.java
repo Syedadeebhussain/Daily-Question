@@ -1,4 +1,4 @@
-// Last updated: 19/4/2026, 10:26:45 pm
+// Last updated: 5/9/2026, 10:42:48 pm
 1class Solution {
 2    public int firstStableIndex(int[] nums, int k) {
 3    int n = nums.length;
